@@ -72,7 +72,6 @@ class TiffReader(object):
             libtiff.TIFFReadDirectory(self._tiff_ptr)
             yield self.read_current()
         yield self.read_current()
-        raise StopIteration
 
     def __getitem__(self, item: int) -> np.ndarray:
         libtiff.TIFFSetDirectory(self._tiff_ptr, item)
@@ -89,6 +88,7 @@ class TiffReader(object):
         if self._length is None:
             self._length = binary_search(np.arange(_max_size),
                                          lambda x: libtiff.TIFFSetDirectory(self._tiff_ptr, x), _max_size)
+            self.seek(0)
         return self._length
 
     @property
