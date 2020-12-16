@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 import subprocess
 
@@ -14,7 +14,7 @@ except Exception as error:
 setup(
     name='tiffreader',
     version='0.1.1',
-    packages=['tiffreader'],
+    packages=find_packages(),
     url='https://github.com/Palpatineli/tiffreader',
     download_url='https://github.com/Palpatineli/tiffreader/archive/0.1.1.tar.gz',
     license='GPLv3',
